@@ -1,4 +1,4 @@
-Function Get-OneDriveAccountUsageSummary {
+function Get-OneDriveAccountUsageSummary {
     [CmdletBinding()]
     param (
         [Parameter()]
@@ -16,13 +16,25 @@ Function Get-OneDriveAccountUsageSummary {
         Invoke-MgGraphRequest -Method Get -Uri $uri -ContentType 'application/json' -ErrorAction Stop -OutputFilePath $outFile
         $result = Get-Content $outFile | ConvertFrom-Csv
         $result | Add-Member -MemberType ScriptProperty -Name LastActivityDate -Value { [datetime]$this."Last Activity Date" }
+
+        $totalSitesCount = $result.Count
+        $nonDeletedSites = $result | Where-Object { $_.'Is Deleted' -eq $false }
+        $nonDeletedSitesCount = ($nonDeletedSites | Measure-Object).Count
+        $deletedSites = $result | Where-Object { $_.'Is Deleted' -eq $true }
+        $deletedSitesCount = ($deletedSites | Measure-Object).Count
+        $activeSitesCount = ($nonDeletedSites | Where-Object { $_.LastActivityDate -ge $Script:GraphStartDate } | Measure-Object).Count
+        $inactiveSitesCount = $nonDeletedSitesCount - $activeSitesCount
+
+
         [PSCustomObject]@{
             'Report Refresh Date'     = $result[0].'Report Refresh Date'
-            'Total OneDrive Sites'    = ($result | Where-Object { $_.'Is Deleted' -eq $false }).Count
-            'Deleted OneDrive Sites'  = ($result | Where-Object { $_.'Is Deleted' -eq $true }).Count
-            'Inactive OneDrive Sites' = ($result | Where-Object { $_.LastActivityDate -lt $Script:GraphStartDate }).Count
-            'Active OneDrive Sites'   = ($result | Where-Object { $_.LastActivityDate -ge $Script:GraphStartDate -and $_.'Is Deleted' -eq $false }).Count
+            'Total OneDrive Sites'    = $totalSitesCount
+            'Deleted OneDrive Sites'  = $deletedSitesCount
+            'Inactive OneDrive Sites' = $inactiveSitesCount
+            'Active OneDrive Sites'   = $activeSitesCount
             'Report Period'           = $ReportPeriod
+            'Start Date'              = ($Script:GraphStartDate).ToString('yyyy-MM-dd')
+            'End Date'                = ($Script:GraphEndDate).ToString('yyyy-MM-dd')
         }
     }
     catch {
