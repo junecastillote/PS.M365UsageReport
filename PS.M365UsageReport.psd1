@@ -100,10 +100,8 @@
         'Get-TeamsDeviceUsageDistributionDetail',
         'Get-TeamsUserActivitySummary',
         'New-M365UsageReport',
-        'IsGraphConnected',
-        'IsExchangeConnected',
-        'ShowM365ReportDate',
-        'SetM365ReportDate'
+        'Get-M365ReportPeriod',
+        'Set-M365ReportPeriod'
     )
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.

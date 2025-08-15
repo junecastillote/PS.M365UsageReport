@@ -8,7 +8,7 @@ function Get-SharePointSiteUsageSummary {
     )
     $ProgressPreference = 'SilentlyContinue'
 
-    $null = SetM365ReportDate -ReportPeriod $ReportPeriod
+    $null = Set-M365ReportPeriod -ReportPeriod $ReportPeriod
 
     try {
         $uri = "https://graph.microsoft.com/beta/reports/getSharePointSiteUsageDetail(period='D$($ReportPeriod)')"

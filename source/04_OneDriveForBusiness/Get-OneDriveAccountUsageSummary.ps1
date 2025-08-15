@@ -8,7 +8,7 @@ function Get-OneDriveAccountUsageSummary {
     )
     $ProgressPreference = 'SilentlyContinue'
 
-    $null = SetM365ReportDate -ReportPeriod $ReportPeriod
+    $null = Set-M365ReportPeriod -ReportPeriod $ReportPeriod
 
     $uri = "https://graph.microsoft.com/beta/reports/getOneDriveUsageAccountDetail(period='D$($ReportPeriod)')"
     try {

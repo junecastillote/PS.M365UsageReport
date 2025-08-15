@@ -146,7 +146,7 @@ Function New-M365UsageReport {
     }
 
     ## Set the report Start and End date based on the available data from Microsoft 365 usage reports.
-    $null = SetM365ReportDate -ReportPeriod $ReportPeriod
+    $null = Set-M365ReportPeriod -ReportPeriod $ReportPeriod
 
     ## Get the tenant organization
     $organization = Get-MgOrganization
