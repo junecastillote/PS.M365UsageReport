@@ -8,7 +8,7 @@ Function Get-M365GroupProvisioningSummary {
     )
     $ProgressPreference = 'SilentlyContinue'
 
-    $null = SetM365ReportDate -ReportPeriod $ReportPeriod
+    $null = Set-M365ReportPeriod -ReportPeriod $ReportPeriod
 
     try {
 

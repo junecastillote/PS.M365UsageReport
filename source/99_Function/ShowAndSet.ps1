@@ -3,14 +3,14 @@ Function ShowThisModule {
     $Script:thisModule
 }
 
-Function ShowM365ReportDate {
+Function Get-M365ReportPeriod {
     [PSCustomObject]@{
         StartDate = $Script:GraphStartDate
         EndDate   = $Script:GraphEndDate
     }
 }
 
-Function SetM365ReportDate {
+Function Set-M365ReportPeriod {
     param (
         [Parameter()]
         [ValidateSet(7, 30, 90, 180)]
@@ -28,5 +28,3 @@ Function SetM365ReportDate {
         $Script:GraphEndDate = [datetime]$temp[-1].'Report Date'
     }
 }
-
-# ShowM365ReportDate

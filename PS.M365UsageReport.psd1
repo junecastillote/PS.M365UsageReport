@@ -12,7 +12,7 @@
     RootModule        = 'PS.M365UsageReport.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '2.0.1'
+    ModuleVersion     = '2.0.2'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -100,10 +100,8 @@
         'Get-TeamsDeviceUsageDistributionDetail',
         'Get-TeamsUserActivitySummary',
         'New-M365UsageReport',
-        'IsGraphConnected',
-        'IsExchangeConnected',
-        'ShowM365ReportDate',
-        'SetM365ReportDate'
+        'Get-M365ReportPeriod',
+        'Set-M365ReportPeriod'
     )
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
