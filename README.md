@@ -1,3 +1,3 @@
-# Microsoft 365 Usage Reports PowerShell Module <!-- omit in toc -->
+# Microsoft 365 Usage Reports PowerShell Module
 
-Refer to the [Wiki](https://github.com/junecastillote/PS-Microsoft-365-Usage-Report/wiki) page for documenation.
+Refer to the [Wiki](https://berry-radium-4ac.notion.site/Microsoft-365-Usage-Reports-PowerShell-Module-PS-M365UsageReport-2c5c1931735180a0b696ea64f480b4d1#2c5c1931735180ef9092e2f61239ff7f) page for documentation.
